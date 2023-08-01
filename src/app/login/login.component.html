@@ -1,0 +1,36 @@
+<div id="login">
+	<div id="formulario">
+		<label>Usuario</label>
+		<input type="text">
+		<label>Contraseña</label>
+		<input type="password">
+	</div>
+    <button id="btn-acceder" [routerLink]="'/proyectos'">Acceder</button>
+    <p class="cursor espacio sobre" id="iniciar-sesion">Iniciar sesión con <i id="facebook" class="fa-brands fa-facebook"></i></p>
+    <a class="cursor espacio sobre" (click)="open(contentContrasena)">Olvidé mi contraseña</a>
+    <a class="cursor espacio sobre" (click)="open(contentCuenta)">Crear cuenta</a>
+</div>
+
+<ng-template #contentContrasena let-modal>
+	<div class="contenedor-modal">
+		<button type="button" id="btn-modal" (click)="modal.dismiss('Cross click')"><i class="fa-regular fa-circle-xmark"></i></button>
+		<p class="modal-title" id="modal-basic-title">Recuperar Contraseña</p>
+		<div class="modal-body">
+			<div class="mb-3">
+				<app-recuperar-contrasena></app-recuperar-contrasena>
+			</div>
+		</div>
+	</div>
+</ng-template>
+
+<ng-template #contentCuenta let-modal>
+	<div class="contenedor-modal">
+		<button type="button" id="btn-modal" (click)="modal.dismiss('Cross click')"><i class="fa-regular fa-circle-xmark"></i></button>
+		<p class="modal-title" id="modal-basic-title">Crear Cuenta</p>
+		<div class="modal-body">
+			<div class="mb-3">
+				<app-crear-cuenta></app-crear-cuenta>
+			</div>
+		</div>
+	</div>
+</ng-template>

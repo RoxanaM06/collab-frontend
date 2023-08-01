@@ -1,0 +1,48 @@
+/**
+ * Vista proyectos
+ */
+#vista-proyectos {
+    display: flex;
+}
+/**
+ * Menú opciones
+ */
+#menu-opciones {
+    background-color: #5cceee;
+    width: 15%;
+    height: 91vh;
+    padding-top: 15px;
+}
+#barras {
+    margin: 15px;
+    font-size: 1.5rem;
+}
+#pagina-principal {
+    margin-top: 20%;
+}
+#crear-proyecto {
+    margin-top: 10%;
+}
+#pagina-principal, #crear-proyecto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p {
+    margin: 0 0 0 10px;
+}
+/**
+ * Contenedor proyectos
+ */
+#contenedor-proyectos {
+    width: 85%;
+    height: 91vh;
+}
+h4 {
+    margin: 5% 0 5% 4%;
+}
+#tarjeta-proyecto {
+    display: flex;
+    margin-left: 5%;
+    flex-wrap: wrap;
+}

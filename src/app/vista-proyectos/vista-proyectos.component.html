@@ -1,0 +1,20 @@
+<div id="vista-proyectos">
+    <div id="menu-opciones">
+        <i id="barras" class="fa-solid fa-bars"></i>
+        <div id="pagina-principal" class="cursor" [routerLink]="'/home'">
+            <i class="fa-solid fa-house"></i>
+            <p>Página Principal</p>
+        </div>
+        <div id="crear-proyecto" class="cursor">
+            <i class="fa-solid fa-folder-plus"></i>
+            <p>Crear Proyecto</p>
+        </div>
+    </div>
+    <div id="contenedor-proyectos">
+        <h4>Proyectos creados</h4>
+        <div id="tarjeta-proyecto">
+            <app-tarjeta-proyecto class="cursor"></app-tarjeta-proyecto>
+            <app-tarjeta-proyecto class="cursor"></app-tarjeta-proyecto>
+        </div>
+    </div>
+</div>

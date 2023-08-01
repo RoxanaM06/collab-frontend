@@ -1,0 +1,43 @@
+#contenedor-logo-collab {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+    height: 13%;
+}
+#logo-grande-collab {
+    height: 100%;
+}
+#contenido {
+    display: flex;
+    justify-content: space-between;
+    margin: 3% 7%;
+}
+.centrar {
+    text-align: center;
+}
+p {
+    font-size: 20px;
+    font-weight: 700;
+}
+#gratis {
+    font-size: 30px;
+}
+#editor {
+    font-size: 25px;
+}
+.imagen-web {
+    height: 140px;
+    margin: 10px;
+}
+#btn-planes {
+    background-color: #24C0EB;
+    border-radius: 25px;
+    border: none;
+    padding: 10px 40px;
+    font-size: 25px;
+    margin-top: 25px;
+}
+#btn-planes:hover {
+    background-color: #25aacf;
+    cursor: pointer;
+}

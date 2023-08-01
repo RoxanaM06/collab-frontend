@@ -1,0 +1,75 @@
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 60%;
+}
+#btn-modal {
+    border: none;
+    background-color: white;
+    font-size: 1.2rem;
+    width: 100%;
+    text-align: right;
+    padding: 15px 15px 0 0;
+}
+label {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    font-weight: 800;
+}
+input {
+    border-radius: 25px;
+    background: #D9D9D9;
+    border: none;
+    height: 30px;
+    width: 280px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+#iniciar-sesion {
+    font-size: 1.5rem;
+}
+#btn-acceder {
+    border-radius: 10px;
+    background: #24C0EB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    font-size: 1.3rem;
+    margin: 25px;
+}
+#btn-acceder:active {
+    transform: translateY(2px);
+}
+#facebook {
+    color: #1977f3;
+}
+.cursor {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+#formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.espacio {
+    margin: 15px;
+}
+.sobre:hover {
+    color: #24C0EB;
+}
+.modal-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 0px 25px;
+    line-height: 1.2;
+}
+.contenedor-modal {
+    height: 630px;
+}

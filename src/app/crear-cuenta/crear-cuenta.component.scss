@@ -1,0 +1,44 @@
+#crear-cuenta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 60%;
+}
+#btn-modal {
+    border: none;
+    background-color: white;
+    font-size: 1.2rem;
+}
+#formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+label {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    font-weight: 800;
+}
+input {
+    border-radius: 25px;
+    background: #D9D9D9;
+    border: none;
+    height: 30px;
+    width: 280px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+#btn-crear {
+    border-radius: 10px;
+    background: #24C0EB;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    font-size: 1.3rem;
+    margin: 25px;
+    padding: 3px 25px;
+}
+#btn-crear:active {
+    transform: translateY(2px);
+}

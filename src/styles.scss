@@ -1,0 +1,14 @@
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+body, html {
+    background-color: #f5f5f5;
+    height: 100vh;
+    margin: 0;
+}
+* {
+    font-family: Quantify;
+}
+.cursor {
+    cursor: pointer;
+}
