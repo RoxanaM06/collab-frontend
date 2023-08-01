@@ -1,0 +1,63 @@
+/**
+ * Perfil del usuario
+ */
+#perfil-usuario {
+    display: flex;
+}
+/**
+ * Información Usuario
+ */
+#info-usuario {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4%;
+}
+#formulario {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+label {
+    margin: 3% 0 3% 3%;
+    font-size: 1.6rem;
+}
+input {
+    border-radius: 15px;
+    background: #D9D9D9;
+    border: none;
+    height: 35px;
+    width: 100%;
+    margin-bottom: 10%;
+    padding: 10px;
+}
+ /**
+  * Información Plan
+  */
+#info-plan {
+    width: 50%;
+    padding: 5% 15% 5% 5%;
+    display: flex;
+    flex-direction: column;
+}
+p {
+    font-size: 1.7rem;
+    margin-bottom: 5%;
+}
+/**
+ * Botones
+ */
+#btn-contrasena, #btn-plan {
+    background-color: #24C0EB;
+    border-radius: 15px;
+    border: none;
+    padding: 8px 25px;
+    font-size: 1.4rem;
+    margin: 20px auto;
+}
+#btn-contrasena:active, #btn-plan:active {
+    transform: translateY(2px);
+    background-color: #36cbf5;
+}

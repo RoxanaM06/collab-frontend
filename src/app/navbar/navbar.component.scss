@@ -21,6 +21,9 @@ img:hover {
     display: flex;
     align-items: center;
 }
+.esconder {
+    display: none;
+}
 //Iniciar sesión
 #btn-inicio {
     border: none;
@@ -55,6 +58,19 @@ img:hover {
 #dropdownBasic1 {
     background-color: #5cceee;
     border: none;
+}
+/**
+ * Opciones crear proyecto
+ */
+#opciones-crear-proyecto {
+    display: flex;
+}
+.opcion {
+    display: flex;
+    align-items: center;
+}
+p {
+    margin: 0 40px 0 7px;
 }
 /**
  * Ventana modal

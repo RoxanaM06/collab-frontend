@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { PlanesInformativosComponent } from './planes-informativos/planes-informativos.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { VistaProyectosComponent } from './vista-proyectos/vista-proyectos.component';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: "proyectos",
     component: VistaProyectosComponent
+  },
+  {
+    path: "perfil",
+    component: PerfilUsuarioComponent
   }
 ];
 

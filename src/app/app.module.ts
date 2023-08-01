@@ -13,6 +13,7 @@ import { RecuperarContrasenaComponent } from './recuperar-contrasena/recuperar-c
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { VistaProyectosComponent } from './vista-proyectos/vista-proyectos.component';
 import { TarjetaProyectoComponent } from './tarjeta-proyecto/tarjeta-proyecto.component';
+import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TarjetaProyectoComponent } from './tarjeta-proyecto/tarjeta-proyecto.co
     RecuperarContrasenaComponent,
     CrearCuentaComponent,
     VistaProyectosComponent,
-    TarjetaProyectoComponent
+    TarjetaProyectoComponent,
+    PerfilUsuarioComponent
   ],
   imports: [
     BrowserModule,

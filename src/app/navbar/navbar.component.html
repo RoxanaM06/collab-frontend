@@ -1,6 +1,20 @@
 <nav>
     <img src="../../assets/logo-collab.png" alt="logo-collab" [routerLink]="'/home'">
 	<div id="opciones-derecha">
+		<div id="opciones-crear-proyecto">
+			<div class="opcion cursor">
+				<i class="fa-solid fa-play"></i>
+				<p>Ejecutar</p>
+			</div>
+			<div class="opcion cursor">
+				<i class="fa-solid fa-people-group"></i>
+				<p>Colaborar</p>
+			</div>
+			<div class="opcion cursor">
+				<i class="fa-solid fa-download"></i>
+				<p>Descargar</p>
+			</div>
+		</div>
 		<button id="btn-inicio" type="button" (click)="open(content)">
 			Iniciar sesión
 		</button>
@@ -11,9 +25,15 @@
 					Usuario Genérico
 				</button>
 				<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-					<button ngbDropdownItem><i class="fa-regular fa-user"></i> Ver Perfil</button>
-					<button ngbDropdownItem><i class="fa-solid fa-screwdriver-wrench"></i> Ver Proyectos</button>
-					<button ngbDropdownItem [routerLink]="'/home'"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion</button>
+					<button ngbDropdownItem [routerLink]="'/perfil'" routerLinkActive="esconder">
+						<i class="fa-regular fa-user"></i> Ver Perfil
+					</button>
+					<button ngbDropdownItem [routerLink]="'/proyectos'" routerLinkActive="esconder">
+						<i class="fa-solid fa-screwdriver-wrench"></i> Ver Proyectos
+					</button>
+					<button ngbDropdownItem [routerLink]="'/home'">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar Sesion
+					</button>
 				</div>
 			</div>
 		</div>
