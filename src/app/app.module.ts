@@ -14,6 +14,7 @@ import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { VistaProyectosComponent } from './vista-proyectos/vista-proyectos.component';
 import { TarjetaProyectoComponent } from './tarjeta-proyecto/tarjeta-proyecto.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.componen
     CrearCuentaComponent,
     VistaProyectosComponent,
     TarjetaProyectoComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    CrearProyectoComponent
   ],
   imports: [
     BrowserModule,

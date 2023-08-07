@@ -7,14 +7,14 @@
         </div>
         <div id="crear-proyecto" class="cursor">
             <i class="fa-solid fa-folder-plus"></i>
-            <p>Crear Proyecto</p>
+            <p [routerLink]="'/crear-proyecto'">Crear Proyecto</p>
         </div>
     </div>
     <div id="contenedor-proyectos">
         <h4>Proyectos creados</h4>
         <div id="tarjeta-proyecto">
-            <app-tarjeta-proyecto class="cursor"></app-tarjeta-proyecto>
-            <app-tarjeta-proyecto class="cursor"></app-tarjeta-proyecto>
+            <app-tarjeta-proyecto class="cursor" [routerLink]="'/editar-proyecto'"></app-tarjeta-proyecto>
+            <app-tarjeta-proyecto class="cursor" [routerLink]="'/editar-proyecto'"></app-tarjeta-proyecto>
         </div>
     </div>
 </div>
