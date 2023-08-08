@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
-  private closeModalSubject = new Subject<void>();
-
-  closeModal$ = this.closeModalSubject.asObservable();
-
-  close() {
-    this.closeModalSubject.next();
-  }
+  $modalInicio = new EventEmitter<any>();
+  $modalRContra = new EventEmitter<any>();
+  $modalCC = new EventEmitter<any>();
+  $modalCambContra = new EventEmitter<any>();
 }

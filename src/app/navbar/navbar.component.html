@@ -15,7 +15,7 @@
 				<p>Descargar</p>
 			</div>
 		</div>
-		<button id="btn-inicio" type="button" (click)="open(content)">
+		<button id="btn-inicio" type="button" (click)="openModal()">
 			Iniciar sesión
 		</button>
 		<div id="contenedor-usuario">
@@ -40,7 +40,11 @@
 	</div>
 </nav>
 
-<ng-template #content let-modal>
+<div *ngIf="modalSwitchInicio == true">
+	<app-login></app-login>
+</div>
+
+<!-- <ng-template #content let-modal>
 	<div class="contenedor-modal">
 		<button type="button" id="btn-modal" (click)="modal.dismiss('Cross click')"><i class="fa-regular fa-circle-xmark"></i></button>
 		<p class="modal-title" id="modal-basic-title">Iniciar Sesión</p>
@@ -50,4 +54,4 @@
 			</div>
 		</div>
 	</div>
-</ng-template>
+</ng-template> -->

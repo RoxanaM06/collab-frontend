@@ -8,7 +8,7 @@
             <input type="email" placeholder="generico.usuario@correo.com">
             <label for="">Contraseña</label>
             <input type="password" placeholder="*********">
-            <button type="button" id="btn-contrasena">Cambiar Contraseña</button>
+            <button type="button" id="btn-contrasena" (click)="openModal()">Cambiar Contraseña</button>
         </form>
     </div>
     <div id="info-plan">
@@ -17,4 +17,8 @@
         <p>Fecha de Renovación: 01/08/2023</p>
         <button type="button" id="btn-plan">Cambiar Plan</button>
     </div>
+</div>
+
+<div *ngIf="modalSwitchCambContra == true">
+    <app-cambiar-contrasena></app-cambiar-contrasena>
 </div>

@@ -1,17 +1,30 @@
-<div id="login">
-	<div id="formulario">
-		<label>Usuario</label>
-		<input type="text">
-		<label>Contraseña</label>
-		<input type="password">
+<div class="contenedor-modal">
+	<div class="modal-overlay"></div>
+	<div id="login">
+		<button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
+		<p class="modal-title" id="modal-basic-title">Iniciar Sesión</p>
+		<div id="formulario">
+			<label>Usuario</label>
+			<input type="text">
+			<label>Contraseña</label>
+			<input type="password">
+		</div>
+		<button id="btn-acceder" [routerLink]="'/proyectos'" (click)="closeModal()">Acceder</button>
+		<p class="cursor espacio sobre" id="iniciar-sesion">Iniciar sesión con <i id="facebook" class="fa-brands fa-facebook"></i></p>
+		<a class="cursor espacio sobre" (click)="openModalRContra()">Olvidé mi contraseña</a>
+		<a class="cursor espacio sobre" (click)="openModalCC()">Crear cuenta</a>
 	</div>
-    <button id="btn-acceder" [routerLink]="'/proyectos'">Acceder</button>
-    <p class="cursor espacio sobre" id="iniciar-sesion">Iniciar sesión con <i id="facebook" class="fa-brands fa-facebook"></i></p>
-    <a class="cursor espacio sobre" (click)="open(contentContrasena)">Olvidé mi contraseña</a>
-    <a class="cursor espacio sobre" (click)="open(contentCuenta)">Crear cuenta</a>
 </div>
 
-<ng-template #contentContrasena let-modal>
+<div *ngIf="modalSwitchRContra == true">
+	<app-recuperar-contrasena></app-recuperar-contrasena>
+</div>
+
+<div *ngIf="modalSwitchCC == true">
+	<app-crear-cuenta></app-crear-cuenta>
+</div>
+
+<!-- <ng-template #contentContrasena let-modal>
 	<div class="contenedor-modal">
 		<button type="button" id="btn-modal" (click)="modal.dismiss('Cross click')"><i class="fa-regular fa-circle-xmark"></i></button>
 		<p class="modal-title" id="modal-basic-title">Recuperar Contraseña</p>
@@ -33,4 +46,4 @@
 			</div>
 		</div>
 	</div>
-</ng-template>
+</ng-template> -->

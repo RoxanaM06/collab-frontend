@@ -15,6 +15,7 @@ import { VistaProyectosComponent } from './vista-proyectos/vista-proyectos.compo
 import { TarjetaProyectoComponent } from './tarjeta-proyecto/tarjeta-proyecto.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.component';
+import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.componen
     VistaProyectosComponent,
     TarjetaProyectoComponent,
     PerfilUsuarioComponent,
-    CrearProyectoComponent
+    CrearProyectoComponent,
+    CambiarContrasenaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-recuperar-contrasena',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class RecuperarContrasenaComponent {
 
+  constructor(private modalSS: ModalService) { }
+
+  closeModal() {
+		this.modalSS.$modalRContra.emit(false);
+	}
 }

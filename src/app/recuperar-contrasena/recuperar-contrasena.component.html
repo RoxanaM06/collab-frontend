@@ -1,5 +1,9 @@
-<div id="recuperar-contrasena">
-    <label>Ingrese su correo electrónico</label>
-    <input type="email">
-    <button id="btn-enviar">Enviar correo de recuperación</button>
+<div class="contenedor-modal">
+    <div id="recuperar-contrasena">
+        <button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
+        <p class="modal-title" id="modal-basic-title">Recuperar Contraseña</p>
+        <label>Ingrese su correo electrónico</label>
+        <input type="email">
+        <button id="btn-enviar">Enviar correo de recuperación</button>
+    </div>
 </div>

@@ -1,0 +1,17 @@
+<div class="contenedor-modal">
+    <div class="modal-overlay"></div>
+	<div id="cambiar-contrasena">
+		<button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
+		<p class="modal-title" id="modal-basic-title">Cambiar Contraseña</p>
+		<i id="escudo" class="fa-solid fa-shield"></i>
+		<div id="formulario">
+			<label>Ingrese contraseña actual</label>
+			<input type="text">
+			<label>Escriba su nueva contraseña</label>
+			<input type="password">
+            <label>Confirme contraseña</label>
+			<input type="password">
+		</div>
+		<button id="btn-confirmar" (click)="closeModal()">Confirmar</button>
+	</div>
+</div>
