@@ -1,16 +1,17 @@
 <div class="contenedor-modal">
+    <div class="modal-overlay" (click)="closeModals()"></div>
     <div id="crear-cuenta">
         <button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
 		<p class="modal-title" id="modal-basic-title">Crear Cuenta</p>
         <div id="formulario">
-            <label>Correo Electrónico</label>
-            <input type="email">
-            <label>Usuario</label>
-            <input type="text">
-            <label>Contraseña</label>
-            <input type="password">
-            <label>Confirme Contraseña</label>
-            <input type="password">
+            <label for="correo">Correo Electrónico</label>
+            <input name="correo" type="email" formControlName="correo" placeholder="Escriba aquí su correo electrónico" required>
+            <label for="usuario">Usuario</label>
+            <input name="usuario" type="text" formControlName="usuario" placeholder="Escriba aquí su nombre de usuario" required>
+            <label for="contrasena">Contraseña</label>
+            <input name="contrasena" type="password" formControlName="contrasena" form="repContrasena" placeholder="Escriba su contrasena aquí" required>
+            <label for="repContrasena">Confirme Contraseña</label>
+            <input name="repContrasena" type="password" formControlName="confirmeContra" placeholder="Repita aquí su contraseña" required>
         </div>
         <button id="btn-crear" [routerLink]="'/proyectos'" (click)="closeModals()">Crear</button>
     </div>

@@ -1,18 +1,23 @@
 <div class="contenedor-modal">
-	<div class="modal-overlay"></div>
+	<div class="modal-overlay" (click)="closeModal()"></div>
 	<div id="login">
 		<button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
 		<p class="modal-title" id="modal-basic-title">Iniciar Sesión</p>
-		<div id="formulario">
-			<label>Usuario</label>
-			<input type="text">
-			<label>Contraseña</label>
-			<input type="password">
-		</div>
-		<button id="btn-acceder" [routerLink]="'/proyectos'" (click)="closeModal()">Acceder</button>
+		<form [formGroup]="formularioRegistro">
+			<div id="formulario">
+				<label for="usuario">Usuario</label>
+				<input type="text" [ngClass]="{'input-error':usuario?.invalid && (usuario?.dirty || usuario?.touched)}" 
+				name="usuario" class="borde" formControlName="usuario" placeholder="Escriba su nombre de usuario" required>
+				<div *ngIf="usuario?.invalid && (usuario?.dirty || usuario?.touched)" class="error">Campo requerido</div>
+				<label for="contrasena">Contraseña</label>
+				<input class="borde" type="password" name="contrasena" formControlName="contrasena" placeholder="Escriba su contraseña" required>
+				<div *ngIf="" class="error">Campo requerido</div>
+			</div>
+		</form>
+		<button [disabled]="!formularioRegistro.valid" id="btn-acceder" [routerLink]="'/proyectos'" (click)="login()">Acceder</button>
 		<p class="cursor espacio sobre" id="iniciar-sesion">Iniciar sesión con <i id="facebook" class="fa-brands fa-facebook"></i></p>
 		<a class="cursor espacio sobre" (click)="openModalRContra()">Olvidé mi contraseña</a>
-		<a class="cursor espacio sobre" (click)="openModalCC()">Crear cuenta</a>
+		<a class="cursor espacio sobre" (click)="openModalCrearC()">Crear cuenta</a>
 	</div>
 </div>
 
@@ -20,7 +25,7 @@
 	<app-recuperar-contrasena></app-recuperar-contrasena>
 </div>
 
-<div *ngIf="modalSwitchCC == true">
+<div *ngIf="modalSwitchCrearC == true">
 	<app-crear-cuenta></app-crear-cuenta>
 </div>
 

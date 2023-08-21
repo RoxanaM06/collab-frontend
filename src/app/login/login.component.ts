@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalService } from '../modal.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -41,24 +42,43 @@ export class LoginComponent implements OnInit {
 // 		}
 // 	}
 	modalSwitchRContra:boolean;
-	modalSwitchCC:boolean;
+	modalSwitchCrearC:boolean;
+
+	formularioRegistro = new FormGroup({
+		usuario: new FormControl('', [Validators.required]),
+		contrasena: new FormControl('', [Validators.required])
+	});
 
 	constructor(private modalSS: ModalService) { }
 
 	ngOnInit() {
 		this.modalSS.$modalRContra.subscribe((valor)=>this.modalSwitchRContra = valor);
-		this.modalSS.$modalCC.subscribe((valor)=>this.modalSwitchCC = valor);
+		this.modalSS.$modalCrearC.subscribe((valor)=>this.modalSwitchCrearC = valor);
 	}
 	
 	openModalRContra() {
 		this.modalSwitchRContra = true;
 	}
 	
-	openModalCC() {
-		this.modalSwitchCC = true;
+	openModalCrearC() {
+		this.modalSwitchCrearC = true;
 	}
 	
 	closeModal() {
 		this.modalSS.$modalInicio.emit(false);
+	}
+	
+	login() {
+		if (this.formularioRegistro.value.usuario == 'Roxana' && this.formularioRegistro.value.contrasena == '123') {
+			this.closeModal();
+			console.log(this.formularioRegistro.value);
+		} else {
+			console.log('Credenciales inválidas');
+		}
+		console.log('Formulario válido: ',this.formularioRegistro.valid);
+	}
+
+	get usuario() {
+		return this.formularioRegistro.get('usuario');
 	}
 }

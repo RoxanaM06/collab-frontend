@@ -16,6 +16,7 @@ import { TarjetaProyectoComponent } from './tarjeta-proyecto/tarjeta-proyecto.co
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { CrearProyectoComponent } from './crear-proyecto/crear-proyecto.component';
 import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contras
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

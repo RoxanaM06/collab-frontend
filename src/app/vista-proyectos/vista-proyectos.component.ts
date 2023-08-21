@@ -15,6 +15,6 @@ export class VistaProyectosComponent implements OnInit {
 
   ngOnInit() {
 		this.modalSS.$modalRContra.subscribe((valor)=>this.modalSwitchRContra = valor);
-		this.modalSS.$modalCC.subscribe((valor)=>this.modalSwitchCC = valor);
+		this.modalSS.$modalCrearC.subscribe((valor)=>this.modalSwitchCC = valor);
 	}
 }

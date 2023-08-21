@@ -12,3 +12,13 @@ body, html {
 .cursor {
     cursor: pointer;
 }
+.error {
+    padding: 5px;
+    margin: 0 5px;
+    font-size: .7rem;
+    color: red;
+}
+.input-error {
+    // border: 1px solid red;
+    outline: 1px solid red;
+}
