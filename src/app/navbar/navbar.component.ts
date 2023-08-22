@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Subscription } from 'rxjs';
-import { ModalService } from '../modal.service';
+import { ModalService } from '../../services/modal.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NavbarService } from 'src/services/navbar.service';
 
 @Component({
   selector: 'app-navbar',
@@ -51,15 +51,42 @@ export class NavbarComponent implements OnInit {
 	// }
 
 	modalSwitchInicio:boolean;
+	esconderUsuario: boolean = true;
+	opcionesProyecto: boolean;
+	btnIniciarSesion: boolean = true;
 
-	constructor(private modalSS:ModalService) { }
+	constructor(private modalSS:ModalService,
+				private route: ActivatedRoute,
+				private navbarS: NavbarService,
+				private router: Router) { }
 
 	ngOnInit(): void {
 		this.modalSS.$modalInicio.subscribe((valor)=>this.modalSwitchInicio = valor);
+		this.navbarS.$esconderUsuario.subscribe((valor)=>this.esconderUsuario = valor);
+		this.navbarS.$opcionesProyecto.subscribe((valor)=>this.opcionesProyecto = valor);
+		this.navbarS.$btnIniciarSesion.subscribe((valor)=>this.btnIniciarSesion = valor);
+		// this.route.url.subscribe(urlSegments => {
+		// 	const urlPath = urlSegments.join('/'); // Convertir los segmentos en una cadena
+		// 	console.log(urlPath);
+		// 	// Verificar si estamos en la página de inicio o en la ruta /home
+		// 	if (urlPath === '' || urlPath === 'home') {
+		// 	  this.esconderUsuario = true;
+		// 	}
+		// 	if (urlPath === 'crear-proyecto' || urlPath === 'editar-proyecto'){
+		// 		this.opcionesProyecto = true;
+		// 	}
+		// });
 	}
-
+	
 	openModal() {
 		this.modalSwitchInicio = true;
+	}
+	
+	cerrarSesion(){
+		this.router.navigate(['/home']);
+		this.navbarS.$btnIniciarSesion.emit(true);
+		this.navbarS.$esconderUsuario.emit(true);
+		this.navbarS.$opcionesProyecto.emit(false);
 	}
 	
 }

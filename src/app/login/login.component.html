@@ -14,7 +14,7 @@
 				<div *ngIf="" class="error">Campo requerido</div>
 			</div>
 		</form>
-		<button [disabled]="!formularioRegistro.valid" id="btn-acceder" [routerLink]="'/proyectos'" (click)="login()">Acceder</button>
+		<button [disabled]="!formularioRegistro.valid" id="btn-acceder"(click)="login()">Acceder</button>  <!-- [routerLink]="'/proyectos'" -->
 		<p class="cursor espacio sobre" id="iniciar-sesion">Iniciar sesión con <i id="facebook" class="fa-brands fa-facebook"></i></p>
 		<a class="cursor espacio sobre" (click)="openModalRContra()">Olvidé mi contraseña</a>
 		<a class="cursor espacio sobre" (click)="openModalCrearC()">Crear cuenta</a>
