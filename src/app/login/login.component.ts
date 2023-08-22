@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ModalDismissReasons, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalService } from '../../services/modal.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavbarService } from 'src/services/navbar.service';
+import { Globals } from 'src/globals';
 
 @Component({
   selector: 'app-login',
@@ -72,17 +72,39 @@ export class LoginComponent implements OnInit {
 		this.modalSS.$modalInicio.emit(false);
 	}
 	
-	login() {
-		if (this.formularioRegistro.value.usuario == 'Roxana' && this.formularioRegistro.value.contrasena == '123') {
+	async login() {
+		// console.log(this.formularioRegistro.value);
+		// if (this.formularioRegistro.value.usuario == 'Roxana' && this.formularioRegistro.value.contrasena == '123') {
+		// 	this.closeModal();
+		// 	console.log('Formulario válido: ',this.formularioRegistro.valid);
+		// 	console.log(this.formularioRegistro.value);
+		// 	this.router.navigate(['/proyectos']);
+		// 	this.navbarS.$esconderUsuario.emit(false);
+		// 	this.navbarS.$btnIniciarSesion.emit(false);
+		// } else {
+		// 	console.log('Credenciales inválidas');
+		// }
+
+		let respuesta = await fetch("http://localhost:3000/login", {
+	    	method: "POST",
+	      	headers: {
+	       		"Content-type": "application/json"
+	     	},
+	      	body: JSON.stringify(this.formularioRegistro.value)
+	    });
+	    let usuarioActual = await respuesta.json();
+	    console.log(usuarioActual);
+	    Globals.usuarioActual = usuarioActual.usuario;
+	    console.log("Usuario Global",Globals.usuarioActual);
+	    
+	    if(usuarioActual.exito == true){
 			this.closeModal();
 			console.log('Formulario válido: ',this.formularioRegistro.valid);
 			console.log(this.formularioRegistro.value);
 			this.router.navigate(['/proyectos']);
 			this.navbarS.$esconderUsuario.emit(false);
 			this.navbarS.$btnIniciarSesion.emit(false);
-		} else {
-			console.log('Credenciales inválidas');
-		}
+	    }
 	}
 	
 	get usuario() {
