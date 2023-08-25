@@ -3,9 +3,12 @@
     <div id="recuperar-contrasena">
         <button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
         <p class="modal-title" id="modal-basic-title">Recuperar Contraseña</p>
-        <label for="correo">Ingrese su correo electrónico</label>
-        <input name="correo" type="email" placeholder="Escriba aquí su correo electrónico" [formControl]="correo">
-        <div *ngIf="correo.invalid" class="error">Ingrese un correo válido</div>
-        <button id="btn-enviar" (click)="enviarCorreo()">Enviar correo de recuperación</button>
+        <label>Ingrese su correo electrónico</label>
+
+        <input name="correo" type="email" placeholder="Escriba aquí su correo electrónico" [formControl]="correo"
+        [ngClass]="{'input-error':correo.invalid && (correo.dirty || correo.touched)}">
+        <div *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)" class="error">Ingrese un correo válido</div>
+
+        <button id="btn-enviar" [disabled]="!correo.valid" (click)="enviarCorreo()">Enviar correo de recuperación</button>
     </div>
 </div>

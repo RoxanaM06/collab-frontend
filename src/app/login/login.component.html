@@ -5,13 +5,17 @@
 		<p class="modal-title" id="modal-basic-title">Iniciar Sesión</p>
 		<form [formGroup]="formularioRegistro">
 			<div id="formulario">
-				<label for="usuario">Usuario</label>
+				<label>Usuario</label>
 				<input type="text" [ngClass]="{'input-error':usuario?.invalid && (usuario?.dirty || usuario?.touched)}" 
 				name="usuario" class="borde" formControlName="usuario" placeholder="Escriba su nombre de usuario" required>
+
 				<div *ngIf="usuario?.invalid && (usuario?.dirty || usuario?.touched)" class="error">Campo requerido</div>
-				<label for="contrasena">Contraseña</label>
-				<input class="borde" type="password" name="contrasena" formControlName="contrasena" placeholder="Escriba su contraseña" required>
-				<div *ngIf="" class="error">Campo requerido</div>
+
+				<label>Contraseña</label>
+				<input type="password" [ngClass]="{'input-error':contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)}"
+				name="contrasena" class="borde" formControlName="contrasena" placeholder="Escriba su contraseña" required>
+
+				<div *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)" class="error">Campo requerido</div>
 			</div>
 		</form>
 		<button [disabled]="!formularioRegistro.valid" id="btn-acceder"(click)="login()">Acceder</button>  <!-- [routerLink]="'/proyectos'" -->

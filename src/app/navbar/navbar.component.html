@@ -22,7 +22,7 @@
 			<i id="perfil-usuario" class="fa-regular fa-circle-user"></i>
 			<div ngbDropdown id="usuario" class="d-inline-block">
 				<button type="button" id="dropdownBasic1" ngbDropdownToggle>
-					Usuario Genérico
+					{{ nombreUsuario }}
 				</button>
 				<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
 					<button ngbDropdownItem [routerLink]="'/perfil'" routerLinkActive="esconder">

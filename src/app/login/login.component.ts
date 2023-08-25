@@ -4,7 +4,7 @@ import { ModalService } from '../../services/modal.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NavbarService } from 'src/services/navbar.service';
-import { Globals } from 'src/globals';
+import { UsuarioService } from 'src/services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -53,7 +53,8 @@ export class LoginComponent implements OnInit {
 
 	constructor(private modalSS: ModalService,
 				private router: Router,
-				private navbarS: NavbarService) { }
+				private navbarS: NavbarService,
+				private usuarioS: UsuarioService) { }
 
 	ngOnInit() {
 		this.modalSS.$modalRContra.subscribe((valor)=>this.modalSwitchRContra = valor);
@@ -94,8 +95,7 @@ export class LoginComponent implements OnInit {
 	    });
 	    let usuarioActual = await respuesta.json();
 	    console.log(usuarioActual);
-	    Globals.usuarioActual = usuarioActual.usuario;
-	    console.log("Usuario Global",Globals.usuarioActual);
+		this.usuarioS.$nombreUsuario.emit(usuarioActual.usuario);
 	    
 	    if(usuarioActual.exito == true){
 			this.closeModal();
@@ -104,10 +104,16 @@ export class LoginComponent implements OnInit {
 			this.router.navigate(['/proyectos']);
 			this.navbarS.$esconderUsuario.emit(false);
 			this.navbarS.$btnIniciarSesion.emit(false);
+			window.localStorage.setItem("collab",JSON.stringify(this.formularioRegistro.value));
+			// window.localStorage.setItem("collab",`${true}`);
 	    }
 	}
 	
 	get usuario() {
 		return this.formularioRegistro.get('usuario');
+	}
+	
+	get contrasena() {
+		return this.formularioRegistro.get('contrasena');
 	}
 }

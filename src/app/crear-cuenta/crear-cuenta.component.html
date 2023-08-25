@@ -3,16 +3,39 @@
     <div id="crear-cuenta">
         <button type="button" id="btn-modal" (click)="closeModal()"><i class="fa-regular fa-circle-xmark"></i></button>
 		<p class="modal-title" id="modal-basic-title">Crear Cuenta</p>
-        <div id="formulario">
-            <label for="correo">Correo Electrónico</label>
-            <input name="correo" type="email" formControlName="correo" placeholder="Escriba aquí su correo electrónico" required>
-            <label for="usuario">Usuario</label>
-            <input name="usuario" type="text" formControlName="usuario" placeholder="Escriba aquí su nombre de usuario" required>
-            <label for="contrasena">Contraseña</label>
-            <input name="contrasena" type="password" formControlName="contrasena" form="repContrasena" placeholder="Escriba su contrasena aquí" required>
-            <label for="repContrasena">Confirme Contraseña</label>
-            <input name="repContrasena" type="password" formControlName="confirmeContra" placeholder="Repita aquí su contraseña" required>
-        </div>
-        <button id="btn-crear" [routerLink]="'/proyectos'" (click)="closeModals()">Crear</button>
+        <form [formGroup]="formularioCrearCuenta">
+            <div id="formulario">
+                <label>Correo Electrónico</label>
+                <input name="correo" type="email" class="borde" formControlName="correo" placeholder="Escriba aquí su correo electrónico"
+                [ngClass]="{'input-error':correo?.invalid && (correo?.dirty || correo?.touched)}" required>
+                <div *ngIf="correo?.invalid && (correo?.dirty || correo?.touched)" class="error">Ingrese un correo válido</div>
+    
+                <label>Usuario</label>
+                <input name="usuario" type="text" class="borde" formControlName="usuario" placeholder="Escriba aquí su nombre de usuario" 
+                [ngClass]="{'input-error':usuario?.invalid && (usuario?.dirty || usuario?.touched)}" required>
+                <div *ngIf="usuario?.invalid && (usuario?.dirty || usuario?.touched)" class="error">Campo requerido</div>
+                
+                <label>Contraseña</label>
+                <input name="contrasena" type="password" class="borde" formControlName="contrasena" placeholder="Escriba aquí su contraseña"
+                [ngClass]="{'input-error':contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)}" required>
+                <div *ngIf="contrasena?.invalid && (contrasena?.dirty || contrasena?.touched)" class="error">Campo requerido</div>
+                
+                <label>Confirme Contraseña</label>
+                <input name="repContrasena" type="password" class="borde" formControlName="confirmeContra" placeholder="Repita aquí su contraseña"
+                [ngClass]="{'input-error':confirmeContra?.invalid && (confirmeContra?.dirty || confirmeContra?.touched)}" required>
+                <div *ngIf="confirmeContra?.invalid && (confirmeContra?.dirty || confirmeContra?.touched)" class="error">Campo requerido</div>
+                <div *ngIf="confirmeContra!=contrasena" class="error">Las contraseñas no coinciden</div>
+            
+                <label>Tipo de plan</label>
+                <select [(ngModel)]="planSeleccionado" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="0" disabled>Seleccione un tipo de plan</option>
+                    <!-- <option *ngFor="let plan of planes" [value]="plan.idPlan">{{plan.nombrePlan}}</option> -->
+                    <option [ngValue]="1">Plan Gratis (Almacenar 3 proyectos)</option>
+                    <option [ngValue]="2">Plan Junior (Almacenar 10 proyectos | 5$/Mes)</option>
+                    <option [ngValue]="3">Plan Senior (Almacenar 30 proyectos | 12$/Mes)</option>
+                </select>
+            </div>
+        </form>
+        <button id="btn-crear" [routerLink]="'/proyectos'" [disabled]="!formularioCrearCuenta.valid" (click)="crearCuenta()">Crear</button> <!-- (click)="closeModals()" -->
     </div>
 </div>
