@@ -17,11 +17,13 @@ export class CrearCuentaComponent {
     correo: new FormControl('',[Validators.required, Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
     usuario: new FormControl('',[Validators.required]),
     contrasena: new FormControl('',[Validators.required]),
-    confirmeContra: new FormControl('',[Validators.required])
+    confirmeContra: new FormControl('',[Validators.required]),
+    seleccionarPlan: new FormControl('',[Validators.required])
   });
 
   nuevoUsuario: Usuario;
-  planSeleccionado: any = 0;
+  // planSeleccionado: any = 0;
+  cantidadPlanes: number;
 
   constructor(private modalSS: ModalService,
               private navbarS: NavbarService,
@@ -69,11 +71,26 @@ export class CrearCuentaComponent {
 
   async crearCuenta() {
 
+    if(this.formularioCrearCuenta.value.seleccionarPlan == "1"){
+      this.cantidadPlanes = 3;
+    }else if(this.formularioCrearCuenta.value.seleccionarPlan == "2"){
+      this.cantidadPlanes = 10;
+    }else if(this.formularioCrearCuenta.value.seleccionarPlan == "3"){
+      this.cantidadPlanes = 30;
+    }else {
+      console.log("No se seleccionó un plan");
+    }
+
+    console.log("Curiosidad: ", this.formularioCrearCuenta)
+
     this.nuevoUsuario = {
       usuario: this.formularioCrearCuenta.value.usuario,
       correo: this.formularioCrearCuenta.value.correo,
       contrasena: this.formularioCrearCuenta.value.contrasena,
-      IdPlan: this.planSeleccionado,
+      plan: {
+        idPlan: this.formularioCrearCuenta.value.seleccionarPlan,
+        cantidad: this.cantidadPlanes
+      },
       proyectos: []
     }
 
@@ -85,7 +102,6 @@ export class CrearCuentaComponent {
 	    	body: JSON.stringify(this.nuevoUsuario)
 	  });
 	  let usuarioActual = await respuesta.json();
-	  // this.usuarioS.$nombreUsuario.emit(usuarioActual.usuario);
 	  
 	  if(usuarioActual){
   		this.closeModals();
@@ -95,16 +111,22 @@ export class CrearCuentaComponent {
   		this.navbarS.$btnIniciarSesion.emit(false);
 
       let infoUsuario = {
-        usuario: usuarioActual.usuarioNuevo.usuario,
-        idPlan: usuarioActual.usuarioNuevo.IdPlan
+        idUsuario: usuarioActual.usuario._id,
+        usuario: usuarioActual.usuario.usuario
+        // idPlan: usuarioActual.usuario.IdPlan
       }
 
-  		window.localStorage.setItem("collab",JSON.stringify(infoUsuario));
-      //Lo emito desde aquí para que se actualice el nombre en el navbar
-      let usuarioLocalStorage = window.localStorage.getItem("collab");
-      if (usuarioLocalStorage != null) {
-        this.usuarioS.$nombreUsuario.emit(JSON.parse(usuarioLocalStorage).usuario);
-      }
+      this.guardarEnLocalStorage(infoUsuario);
 	  }
 	}
+
+  guardarEnLocalStorage(infoUsuario:any) {
+
+    window.localStorage.setItem("collab",JSON.stringify(infoUsuario));
+    //Lo emito desde aquí para que se actualice el nombre en el navbar
+    let usuarioLocalStorage = window.localStorage.getItem("collab");
+    if (usuarioLocalStorage != null) {
+      this.usuarioS.$nombreUsuario.emit(JSON.parse(usuarioLocalStorage).usuario);
+    }
+  }
 }

@@ -12,37 +12,7 @@ import { UsuarioService } from 'src/services/usuario.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-//   closeResult = '';
-//   modalRef: NgbModalRef | null;
 
-// 	constructor(private modalService: NgbModal,
-// 				private modalSharedService: ModalService) {}
-
-// 	acceder() {
-// 		// Lógica para iniciar sesión
-// 		this.modalSharedService.close();
-// 	}
-
-// 	open(content:any) {
-// 		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
-// 			(result) => {
-// 				this.closeResult = `Closed with: ${result}`;
-// 			},
-// 			(reason) => {
-// 				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-// 			},
-// 		);
-// 	}
-
-// 	private getDismissReason(reason: any): string {
-// 		if (reason === ModalDismissReasons.ESC) {
-// 			return 'by pressing ESC';
-// 		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-// 			return 'by clicking on a backdrop';
-// 		} else {
-// 			return `with: ${reason}`;
-// 		}
-// 	}
 	modalSwitchRContra:boolean;
 	modalSwitchCrearC:boolean;
 
@@ -74,17 +44,6 @@ export class LoginComponent implements OnInit {
 	}
 	
 	async login() {
-		// console.log(this.formularioRegistro.value);
-		// if (this.formularioRegistro.value.usuario == 'Roxana' && this.formularioRegistro.value.contrasena == '123') {
-		// 	this.closeModal();
-		// 	console.log('Formulario válido: ',this.formularioRegistro.valid);
-		// 	console.log(this.formularioRegistro.value);
-		// 	this.router.navigate(['/proyectos']);
-		// 	this.navbarS.$esconderUsuario.emit(false);
-		// 	this.navbarS.$btnIniciarSesion.emit(false);
-		// } else {
-		// 	console.log('Credenciales inválidas');
-		// }
 
 		let respuesta = await fetch("http://localhost:3000/usuario/login", {
 	    	method: "POST",
@@ -104,9 +63,27 @@ export class LoginComponent implements OnInit {
 			this.router.navigate(['/proyectos']);
 			this.navbarS.$esconderUsuario.emit(false);
 			this.navbarS.$btnIniciarSesion.emit(false);
-			window.localStorage.setItem("collab",JSON.stringify(this.formularioRegistro.value));
+			// window.localStorage.setItem("collab",JSON.stringify(this.formularioRegistro.value));
 			// window.localStorage.setItem("collab",`${true}`);
 	    }
+		
+		let infoUsuario = {
+			idUsuario: usuarioActual.usuario._id,
+			usuario: usuarioActual.usuario.usuario
+			// idPlan: usuarioActual.usuario.IdPlan
+		}
+		
+		this.guardarEnLocalStorage(infoUsuario);
+	}
+	
+	guardarEnLocalStorage(infoUsuario:any) {
+
+		window.localStorage.setItem("collab",JSON.stringify(infoUsuario));
+		//Lo emito desde aquí para que se actualice el nombre en el navbar
+		let usuarioLocalStorage = window.localStorage.getItem("collab");
+		if (usuarioLocalStorage != null) {
+		  this.usuarioS.$nombreUsuario.emit(JSON.parse(usuarioLocalStorage).usuario);
+		}
 	}
 	
 	get usuario() {

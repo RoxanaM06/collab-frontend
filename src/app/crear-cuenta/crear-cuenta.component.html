@@ -27,9 +27,8 @@
                 <div *ngIf="confirmeContra!=contrasena" class="error">Las contraseñas no coinciden</div>
             
                 <label>Tipo de plan</label>
-                <select [(ngModel)]="planSeleccionado" [ngModelOptions]="{standalone: true}">
+                <select formControlName="seleccionarPlan"> <!-- [(ngModel)]="planSeleccionado" [ngModelOptions]="{standalone: true} -->
                     <option [ngValue]="0" disabled>Seleccione un tipo de plan</option>
-                    <!-- <option *ngFor="let plan of planes" [value]="plan.idPlan">{{plan.nombrePlan}}</option> -->
                     <option [ngValue]="1">Plan Gratis (Almacenar 3 proyectos)</option>
                     <option [ngValue]="2">Plan Junior (Almacenar 10 proyectos | 5$/Mes)</option>
                     <option [ngValue]="3">Plan Senior (Almacenar 30 proyectos | 12$/Mes)</option>
