@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
 		// 	console.log('Credenciales inválidas');
 		// }
 
-		let respuesta = await fetch("http://localhost:3000/login", {
+		let respuesta = await fetch("http://localhost:3000/usuario/login", {
 	    	method: "POST",
 	      	headers: {
 	       		"Content-type": "application/json"
