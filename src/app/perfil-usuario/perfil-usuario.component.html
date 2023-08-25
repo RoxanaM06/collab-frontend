@@ -1,13 +1,13 @@
-<div id="perfil-usuario">
+<div id="perfil-usuario" *ngIf="usuarioActual">
     <div id="info-usuario">
         <h3>Información de la cuenta</h3>
         <form id="formulario">
             <label>Nombre de Usuario</label>
-            <input type="text" name="nombre-usuario" placeholder="Usuario Genérico">
+            <input type="text" name="nombre-usuario" [value]="usuarioActual.usuario" disabled>
             <label>Correo Electrónico</label>
-            <input type="email" name="correo" placeholder="generico.usuario@correo.com">
+            <input type="email" name="correo" [value]="usuarioActual.correo" disabled>
             <label>Contraseña</label>
-            <input type="password" name="contrasena" placeholder="*********">
+            <input type="password" name="contrasena" [value]="usuarioActual.contrasena">
             <button type="button" id="btn-contrasena" (click)="openModal()">Cambiar Contraseña</button>
         </form>
     </div>
