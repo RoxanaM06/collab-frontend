@@ -13,8 +13,8 @@
     <div id="contenedor-proyectos">
         <h4>Proyectos creados</h4>
         <div id="tarjeta-proyecto">
-            <app-tarjeta-proyecto class="cursor" [routerLink]="'/editar-proyecto'"></app-tarjeta-proyecto>
-            <app-tarjeta-proyecto class="cursor" [routerLink]="'/editar-proyecto'"></app-tarjeta-proyecto>
+            <app-tarjeta-proyecto *ngFor="let proyecto of proyectosUsuario" [proyecto]="proyecto"
+            class="cursor" [routerLink]="'/editar-proyecto'"></app-tarjeta-proyecto>
         </div>
     </div>
 </div>

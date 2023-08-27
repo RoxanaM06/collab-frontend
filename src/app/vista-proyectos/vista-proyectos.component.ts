@@ -12,12 +12,14 @@ export class VistaProyectosComponent implements OnInit {
 
   modalSwitchRContra:boolean;
   modalSwitchCC:boolean;
+  idUsuario:string;
+  proyectosUsuario:any;
 
   constructor(private modalSS:ModalService,
               private navbarS:NavbarService,
               private usuarioS:UsuarioService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
 		this.modalSS.$modalRContra.subscribe((valor)=>this.modalSwitchRContra = valor);
 		this.modalSS.$modalCrearC.subscribe((valor)=>this.modalSwitchCC = valor);
     this.navbarS.$opcionesProyecto.emit(false);
@@ -26,5 +28,29 @@ export class VistaProyectosComponent implements OnInit {
 		if (usuarioLocalStorage != null) {
   		this.usuarioS.$nombreUsuario.emit(JSON.parse(usuarioLocalStorage).usuario);
 		}
+    //Para obtener los proyectos
+    let proyecto = await this.obtenerProyectos();
+		this.proyectosUsuario = proyecto.nombresProyectos;
+		console.log("Proyectos usuario:", this.proyectosUsuario);
+	}
+
+  async obtenerProyectos() {
+
+		let usuario = window.localStorage.getItem("collab");
+
+		if(usuario!=null){
+			this.idUsuario = JSON.parse(usuario).idUsuario;
+      console.log("idUsuario",this.idUsuario);
+		}
+		
+		let respuesta = await fetch(`http://localhost:3000/usuario/proyectos/${this.idUsuario}`, {
+	    	method: "GET",
+	      	headers: {
+	       		"Content-type": "application/json"
+	     	}
+	    });
+	    let proyectosObtenidos = await respuesta.json();
+
+		return proyectosObtenidos;
 	}
 }

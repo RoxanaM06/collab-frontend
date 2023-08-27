@@ -11,7 +11,7 @@ import { UsuarioService } from 'src/services/usuario.service';
   templateUrl: './crear-cuenta.component.html',
   styleUrls: ['./crear-cuenta.component.scss']
 })
-export class CrearCuentaComponent {
+export class CrearCuentaComponent implements OnInit {
 
   formularioCrearCuenta = new FormGroup({
     correo: new FormControl('',[Validators.required, Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
@@ -33,6 +33,10 @@ export class CrearCuentaComponent {
   // ngOnInit() {
   //     this.obtenerPlanes();
   // }
+
+  ngOnInit() {
+    this.formularioCrearCuenta.value.seleccionarPlan = "0";
+  }
 
   closeModal() {
 		this.modalSS.$modalCrearC.emit(false);

@@ -28,10 +28,10 @@
             
                 <label>Tipo de plan</label>
                 <select formControlName="seleccionarPlan"> <!-- [(ngModel)]="planSeleccionado" [ngModelOptions]="{standalone: true} -->
-                    <option [ngValue]="0" disabled>Seleccione un tipo de plan</option>
-                    <option [ngValue]="1">Plan Gratis (Almacenar 3 proyectos)</option>
-                    <option [ngValue]="2">Plan Junior (Almacenar 10 proyectos | 5$/Mes)</option>
-                    <option [ngValue]="3">Plan Senior (Almacenar 30 proyectos | 12$/Mes)</option>
+                    <option [value]="0" disabled selected>Seleccione un tipo de plan</option>
+                    <option [value]="1">Plan Gratis (Almacenar 3 proyectos)</option>
+                    <option [value]="2">Plan Junior (Almacenar 10 proyectos | 5$/Mes)</option>
+                    <option [value]="3">Plan Senior (Almacenar 30 proyectos | 12$/Mes)</option>
                 </select>
             </div>
         </form>
