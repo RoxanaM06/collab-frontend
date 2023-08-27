@@ -38,19 +38,20 @@ export class VistaProyectosComponent implements OnInit {
 
 		let usuario = window.localStorage.getItem("collab");
 
-		if(usuario!=null){
+		if(usuario!=null || usuario!=undefined){
 			this.idUsuario = JSON.parse(usuario).idUsuario;
-      console.log("idUsuario",this.idUsuario);
+      		console.log("idUsuario",this.idUsuario);
+
+			  let respuesta = await fetch(`http://localhost:3000/usuario/proyectos/${this.idUsuario}`, {
+				method: "GET",
+				  headers: {
+					   "Content-type": "application/json"
+				 }
+			});
+			let proyectosObtenidos = await respuesta.json();
+	
+			return proyectosObtenidos;
 		}
 		
-		let respuesta = await fetch(`http://localhost:3000/usuario/proyectos/${this.idUsuario}`, {
-	    	method: "GET",
-	      	headers: {
-	       		"Content-type": "application/json"
-	     	}
-	    });
-	    let proyectosObtenidos = await respuesta.json();
-
-		return proyectosObtenidos;
 	}
 }

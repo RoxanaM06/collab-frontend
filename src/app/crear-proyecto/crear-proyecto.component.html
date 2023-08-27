@@ -3,24 +3,44 @@
         <i id="barras" class="fa-solid fa-bars"></i>
         <form id="formulario">
             <label>Nombre del proyecto</label>
-            <input type="text">
+            <input type="text" [(ngModel)]="nombreProyecto" [ngModelOptions]="{ standalone: true }">
             <label>Descripción del proyecto</label>
-            <textarea cols="17" rows="5"></textarea>
+            <textarea cols="17" rows="5" [(ngModel)]="descripcionProyecto" [ngModelOptions]="{ standalone: true }"></textarea>
+            <button type="button" class="cursor" (click)="crearProyecto()">Guardar</button>
         </form>
     </div>
     <div id="contenedor-proyecto">
-        <div id="cuadros">
+        <div id="cuadros" *ngIf="opcion=='editar'">
             <div id="html">
                 <label class="titulos">HTML</label>
-                <textarea class="cuadro"></textarea>
+                <textarea class="cuadro" [(ngModel)]="htmlProyecto">{{proyectoUsuario.html}}</textarea>
             </div>
             <div id="css">
                 <label class="titulos">CSS</label>
-                <textarea class="cuadro"></textarea>
+                <textarea class="cuadro" [(ngModel)]="cssProyecto">{{proyectoUsuario.css}}</textarea>
             </div>
             <div id="javascript">
                 <label class="titulos">JavaScript</label>
+                <textarea class="cuadro" [(ngModel)]="jsProyecto">{{proyectoUsuario.javascript}}</textarea>
+            </div>
+            <div id="resultado">
+                <label class="titulos">Resultado:</label>
                 <textarea class="cuadro"></textarea>
+            </div>
+        </div>
+
+        <div id="cuadros" *ngIf="opcion!='editar'">
+            <div id="html">
+                <label class="titulos">HTML</label>
+                <textarea class="cuadro" [(ngModel)]="htmlProyecto"></textarea>
+            </div>
+            <div id="css">
+                <label class="titulos">CSS</label>
+                <textarea class="cuadro" [(ngModel)]="cssProyecto"></textarea>
+            </div>
+            <div id="javascript">
+                <label class="titulos">JavaScript</label>
+                <textarea class="cuadro" [(ngModel)]="jsProyecto"></textarea>
             </div>
             <div id="resultado">
                 <label class="titulos">Resultado:</label>

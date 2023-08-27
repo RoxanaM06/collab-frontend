@@ -79,3 +79,14 @@ textarea {
 .titulos {
     margin: 5px 10px;
 }
+/**
+ * Botón
+ */
+button {
+    border: none;
+    border-radius: 5px;
+    margin: 15px;
+}
+button:active {
+    transform: translateY(2px);
+}
