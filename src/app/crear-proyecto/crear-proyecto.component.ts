@@ -21,6 +21,10 @@ export class CrearProyectoComponent implements OnInit {
   htmlProyecto:string;
   cssProyecto:string;
   jsProyecto:string;
+  frameProyecto: string 
+
+  
+
 
   async ngOnInit() {
     this.navbarS.$opcionesProyecto.emit(true);
@@ -33,8 +37,28 @@ export class CrearProyectoComponent implements OnInit {
       let proyecto = await this.obtenerProyecto(this.idProyecto);
 		  console.log("Proyecto usuario:", proyecto);
     }
-	
+    
+  this.frameProyecto= `<!DOCTYPE html>
+<html lang="es">
+<head>
+<style>
+${this.cssProyecto}
+</style>
+</head>
+<body>
+${this.htmlProyecto}
+<script>
+${this.jsProyecto}
+</script>
+</body>
+</html>`;
+
+
+  
   }
+
+
+
 
   async obtenerProyecto(idProyecto:string|null){
 
