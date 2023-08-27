@@ -31,30 +31,34 @@ export class CrearProyectoComponent implements OnInit {
     
     if (this.opcion=='editar') {
       let proyecto = await this.obtenerProyecto(this.idProyecto);
-		  this.proyectoUsuario = proyecto;
-		  console.log("Proyecto usuario:", this.proyectoUsuario);
+		  console.log("Proyecto usuario:", proyecto);
     }
 	
   }
 
   async obtenerProyecto(idProyecto:string|null){
 
-    let idUsuario:string = '';
+    let idU:string = '';
 
     let usuario = window.localStorage.getItem('collab')
-    if (usuario) {
-      idUsuario = JSON.parse(usuario);
+    if (usuario!=null) {
+      idU = JSON.parse(usuario).idUsuario;
     }
 
     if (idProyecto!=null) {
-      let respuesta = await fetch(`http://localhost:3000/usuario/${idUsuario}/proyecto/${idProyecto}`, {
+      let respuesta = await fetch(`http://localhost:3000/usuario/${idU}/proyecto/${idProyecto}`, {
         method: "GET",
           headers: {
              "Content-type": "application/json"
          }
       });
       let proyectoObtenido = await respuesta.json();
-      return proyectoObtenido;
+      console.log("ProyectoObtenido",proyectoObtenido);
+      this.nombreProyecto = proyectoObtenido.proyectosOb.nombre;
+      this.descripcionProyecto = proyectoObtenido.proyectosOb.descripcion;
+      this.htmlProyecto = proyectoObtenido.proyectosOb.HTML;
+      this.cssProyecto = proyectoObtenido.proyectosOb.CSS;
+      this.jsProyecto = proyectoObtenido.proyectosOb.JavaScript;
     }
   }
 
@@ -66,7 +70,8 @@ export class CrearProyectoComponent implements OnInit {
       this.idUsuario = JSON.parse(usuario).idUsuario;
     }
 
-    let respuesta = await fetch(`http://localhost:3000/usuario/crear/proyecto`, {
+    if (this.opcion!='editar') {
+      let respuesta = await fetch(`http://localhost:3000/usuario/crear/proyecto`, {
         method: "POST",
           headers: {
              "Content-type": "application/json"
@@ -88,6 +93,27 @@ export class CrearProyectoComponent implements OnInit {
       });
       let proyectoCreado = await respuesta.json();
       console.log("Proyecto creado",proyectoCreado)
+    }else{
+      let respuesta = await fetch(`http://localhost:3000/usuario/actualizar/proyecto`, {
+        method: "PATCH",
+          headers: {
+             "Content-type": "application/json"
+         },
+         body: JSON.stringify({
+          "usuarioID": this.idUsuario,
+          "proyecto" : this.idProyecto, 
+          "datosProyecto": {
+              "nombre":this.nombreProyecto,
+              "descripcion":this.descripcionProyecto,
+              "HTML":this.htmlProyecto,
+              "CSS":this.cssProyecto,
+              "JavaScript":this.jsProyecto
+              }
+          })
+      });
+      let proyectoCEditado = await respuesta.json();
+      console.log("Proyecto editado",proyectoCEditado);
+    }
   }
 
 }
