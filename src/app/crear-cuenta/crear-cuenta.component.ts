@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavbarService } from 'src/services/navbar.service';
@@ -11,7 +11,7 @@ import { UsuarioService } from 'src/services/usuario.service';
   templateUrl: './crear-cuenta.component.html',
   styleUrls: ['./crear-cuenta.component.scss']
 })
-export class CrearCuentaComponent implements OnInit {
+export class CrearCuentaComponent {
 
   formularioCrearCuenta = new FormGroup({
     correo: new FormControl('',[Validators.required, Validators.pattern(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i)]),
@@ -34,9 +34,27 @@ export class CrearCuentaComponent implements OnInit {
   //     this.obtenerPlanes();
   // }
 
-  ngOnInit() {
-    this.formularioCrearCuenta.value.seleccionarPlan = "0";
-  }
+  // ngAfterViewInit() {
+  //   this.formularioCrearCuenta.value.seleccionarPlan = "0";
+    
+  //   // this.formularioCrearCuenta.get('confirmeContra').setValidators([Validators.required, this.validarContrasenas.bind(this)]);
+
+  //   this.formularioCrearCuenta.get('contrasena').valueChanges.subscribe(() => {
+  //     const confirmeContraControl = this.formularioCrearCuenta.get('confirmeContra');
+    
+  //     if (confirmeContraControl) {
+  //       // Actualizar la validación de confirmeContra al cambiar la contraseña
+  //       confirmeContraControl.updateValueAndValidity();
+  //     }
+  //   });
+  // }
+  
+  // validarContrasenas(control: AbstractControl) {
+  //   const contrasena = this.formularioCrearCuenta.get('contrasena').value;
+  //   const confirmeContra = control.value;
+  
+  //   return contrasena === confirmeContra ? null : { noCoinciden: true };
+  // }
 
   closeModal() {
 		this.modalSS.$modalCrearC.emit(false);

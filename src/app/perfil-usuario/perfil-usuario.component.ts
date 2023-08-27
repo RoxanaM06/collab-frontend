@@ -22,7 +22,7 @@ export class PerfilUsuarioComponent {
 		this.navbarS.$opcionesProyecto.emit(false);
 		let usuario = await this.obtenerUsuario();
 		this.usuarioActual = usuario.usuarioObtenido;
-		console.log("Usuario en el ngOnInit", this.usuarioActual);
+		// console.log("Usuario en el ngOnInit", this.usuarioActual);
 	}
 
 	openModal() {

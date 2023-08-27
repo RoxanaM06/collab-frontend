@@ -24,7 +24,8 @@
                 <input name="repContrasena" type="password" class="borde" formControlName="confirmeContra" placeholder="Repita aquí su contraseña"
                 [ngClass]="{'input-error':confirmeContra?.invalid && (confirmeContra?.dirty || confirmeContra?.touched)}" required>
                 <div *ngIf="confirmeContra?.invalid && (confirmeContra?.dirty || confirmeContra?.touched)" class="error">Campo requerido</div>
-                <div *ngIf="confirmeContra!=contrasena" class="error">Las contraseñas no coinciden</div>
+                <!-- <div *ngIf="confirmeContra!=contrasena" class="error">Las contraseñas no coinciden</div> -->
+                <!-- <div *ngIf="formularioCrearCuenta.get('confirmeContra').hasError('noCoinciden')" class="error">Las contraseñas no coinciden</div> -->
             
                 <label>Tipo de plan</label>
                 <select formControlName="seleccionarPlan"> <!-- [(ngModel)]="planSeleccionado" [ngModelOptions]="{standalone: true} -->

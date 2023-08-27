@@ -6,12 +6,12 @@
 		<i id="escudo" class="fa-solid fa-shield"></i>
 		<div id="formulario">
 			<label>Ingrese contraseña actual</label>
-			<input type="text">
+			<input type="password" [(ngModel)]="contraActual">
 			<label>Escriba su nueva contraseña</label>
-			<input type="password">
+			<input type="password" [(ngModel)]="nuevaContra">
             <label>Confirme contraseña</label>
-			<input type="password">
+			<input type="password" [(ngModel)]="confirmeContra">
 		</div>
-		<button id="btn-confirmar" (click)="closeModal()">Confirmar</button>
+		<button id="btn-confirmar" (click)="cambiarContra()">Confirmar</button>
 	</div>
 </div>
